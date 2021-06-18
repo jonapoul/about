@@ -1,0 +1,62 @@
+buildscript {
+    apply from: "$rootProject.projectDir/versions.gradle"
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+        classpath "com.android.tools.build:gradle:$versions.gradle"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:$versions.spotless"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$versions.ktlint"
+    }
+}
+
+allprojects {
+    apply from: "$rootProject.projectDir/versions.gradle"
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+subprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
+    ktlint {
+        disabledRules = ["no-wildcard-imports"]
+    }
+
+    apply plugin: "com.diffplug.spotless"
+    spotless {
+        format 'misc', {
+            target '**/*.gradle', '**/*.md', '**/.gitignore', '**/.pro'
+            indentWithSpaces()
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+        kotlin {
+            ktlint()
+            indentWithSpaces()
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+        json {
+            target '**/*.json'
+            simple()
+        }
+        groovyGradle {
+            greclipse()
+        }
+    }
+}
