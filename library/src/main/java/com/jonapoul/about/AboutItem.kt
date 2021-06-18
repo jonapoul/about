@@ -11,7 +11,6 @@ import com.jonapoul.extensions.capitalized
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 data class AboutItem(
     @DrawableRes val icon: Int,
     val title: String,
