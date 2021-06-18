@@ -1,9 +1,16 @@
 package com.jonapoul.about
 
+import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import com.jonapoul.extensions.capitalized
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 data class AboutItem(
     @DrawableRes val icon: Int,
@@ -12,22 +19,35 @@ data class AboutItem(
     val onClickButton: OnClickListener? = null,
 ) {
 
-    /**
-     * Some items that I commonly use in my own projects.
-     */
+    fun interface OnClickListener {
+        fun onItemClick(context: Context)
+    }
+
     companion object {
-        /**
-         * Use as:  `AboutItem.fromVersionName(BuildConfig.VERSION_NAME)`
-         */
+
+        @SuppressLint("QueryPermissionsNeeded")
+        fun fromEmail(emailAddress: String): AboutItem = AboutItem(
+            icon = R.drawable.ic_email,
+            title = "Email",
+            subtitle = emailAddress,
+            onClickButton = { ctx ->
+                val intent = Intent(Intent.ACTION_SENDTO)
+                intent.data = Uri.parse("mailto:") // only email apps should handle this
+                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(emailAddress))
+                try {
+                    ctx.startActivity(intent)
+                } catch (e: ActivityNotFoundException) {
+                    Toast.makeText(ctx, "No email clients found!", Toast.LENGTH_LONG).show()
+                }
+            }
+        )
+
         fun fromVersion(versionName: String, versionCode: Int): AboutItem = AboutItem(
             icon = R.drawable.ic_info,
             title = "Version",
             subtitle = "$versionName ($versionCode)"
         )
 
-        /**
-         * Use as:  `AboutItem.fromBuildType(BuildConfig.BUILD_TYPE)`
-         */
         fun fromBuildType(buildType: String): AboutItem = AboutItem(
             icon = R.drawable.ic_build,
             title = "Build Type",

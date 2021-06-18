@@ -38,6 +38,7 @@ object ExampleSections {
                         openWebPage(context = it, url = "https://reddit.com$REDDIT_SUB")
                     }
                 ),
+                AboutItem.fromEmail("contact@company.org")
             )
         )
     )
