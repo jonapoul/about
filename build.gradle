@@ -55,8 +55,5 @@ subprojects {
             target '**/*.json'
             simple()
         }
-        groovyGradle {
-            greclipse()
-        }
     }
 }
