@@ -72,5 +72,38 @@ data class AboutItem(
             subtitle = SimpleDateFormat("HH:mm:ss dd MMM yyyy z", Locale.getDefault())
                 .format(buildDate)
         )
+
+        fun fromWebsite(@DrawableRes icon: Int, name: String, url: String): AboutItem = AboutItem(
+            icon = icon,
+            title = name,
+            subtitle = url,
+            onClickButton = { openWebPage(it, url) }
+        )
+
+        fun fromGithub(url: String): AboutItem = fromWebsite(
+            icon = R.drawable.ic_github,
+            name = "GitHub",
+            url = url
+        )
+
+        fun fromDiscord(url: String): AboutItem = fromWebsite(
+            icon = R.drawable.ic_discord,
+            name = "Discord",
+            url = url
+        )
+
+        fun fromReddit(url: String): AboutItem = fromWebsite(
+            icon = R.drawable.ic_reddit,
+            name = "Reddit",
+            url = url
+        )
+
+        private fun openWebPage(context: Context, url: String) {
+            /* Open a web browser to the page, or an app if installed */
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intent)
+        }
     }
 }

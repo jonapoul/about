@@ -19,7 +19,7 @@ allprojects {
 Module-level `build.gradle`:
 ```gradle
 dependencies {
-    implementation "com.github.jonapoul:about:1.0.3"
+    implementation "com.github.jonapoul:about:1.0.4"
 }
 ```
 
