@@ -2,6 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
+ext {
+    GROUP_ID = 'com.jonapoul'
+    ARTIFACT_ID = 'about'
+}
+
 android {
     compileSdkVersion versions.targetSdk
     buildToolsVersion versions.buildTools
@@ -25,6 +30,7 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        kotlinOptions.freeCompilerArgs += ['-module-name', "$GROUP_ID.$ARTIFACT_ID"]
     }
 
     kotlinOptions.jvmTarget = '1.8'
