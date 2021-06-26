@@ -39,8 +39,7 @@
             android:id="@+id/item_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?android:attr/textColorPrimary"
-            app:fontFamily="sans-serif"
+            android:textAppearance="?android:attr/textAppearanceListItemSecondary"
             tools:text="Subtitle" />
 
     </LinearLayout>
