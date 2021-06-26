@@ -1,9 +1,9 @@
 ext.versions = [
         // Build variables
-        minSdk                  : 21,
+        minSdk                  : 12,
         targetSdk               : 30,
-        libVersionCode          : 1,
-        libVersionName          : '1.0.5',
+        libVersionCode          : 7,
+        libVersionName          : '1.0.6',
 
         // Plugins, etc
         gradle                  : '4.2.1',
@@ -15,7 +15,7 @@ ext.versions = [
         spotless                : '5.14.0',
 
         // Library dependencies
-        android_extensions      : '1.0.5',
+        android_extensions      : '1.0.6',
         material                : '1.3.0',
 
         // Sample app dependencies

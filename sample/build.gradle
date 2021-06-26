@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.jonapoul.about.sample"
-        minSdkVersion versions.minSdk
+        minSdkVersion 14
         targetSdkVersion versions.targetSdk
         versionCode versions.libVersionCode
         versionName versions.libVersionName

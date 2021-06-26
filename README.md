@@ -5,6 +5,9 @@
 
 ## Summary
 A collection of two useful views/fragments that I use all the time, specifically for displaying "about my app" information in either a `AlertDialog` or a `Fragment`. It's not a particularly complicated library but it's nice to keep it in a single place.
+
+## API Reference
+See [https://jonapoul.github.io/about](https://jonapoul.github.io/about).
  
 ## Gradle Import
 Root-level `build.gradle`:
@@ -19,7 +22,7 @@ allprojects {
 Module-level `build.gradle`:
 ```gradle
 dependencies {
-    implementation "com.github.jonapoul:about:1.0.5"
+    implementation "com.github.jonapoul:about:1.0.6"
 }
 ```
 
