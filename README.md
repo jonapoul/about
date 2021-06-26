@@ -1,6 +1,6 @@
 # about
 
-![Build](https://github.com/jonapoul/about/actions/workflows/build.yml/badge.svg)
+![Build](https://github.com/jonapoul/about/actions/workflows/actions.yml/badge.svg)
 [![Jitpack](https://jitpack.io/v/jonapoul/about.svg)](https://jitpack.io/#jonapoul/about)
 
 ## Summary
@@ -27,11 +27,10 @@ dependencies {
 
 | Dialog light | Fragment light
 |:--:|:--:|
-![Dialog](docs/dialog_light.png) | ![Fragment](docs/fragment_light.png) |
+![Dialog](img/dialog_light.png) | ![Fragment](img/fragment_light.png) |
 
 | Dialog dark | Fragment dark
 |:--:|:--:|
-![Dialog](docs/dialog_dark.png) | ![Fragment](docs/fragment_dark.png) |
 
 ## Usage
 ### General
