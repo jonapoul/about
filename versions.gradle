@@ -8,6 +8,7 @@ ext.versions = [
         // Plugins, etc
         gradle                  : '4.2.1',
         kotlin                  : '1.5.10',
+        dokka                   : '1.4.32',
         buildTools              : '30.0.3',
         ktlint                  : '10.1.0',
         leakcanary              : '2.7',
