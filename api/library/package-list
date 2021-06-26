@@ -1,6 +1,8 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.jonapoul.about////PointingToDeclaration/library/com.jonapoul.about/index.html
+$dokka.location:com.jonapoul.about/AboutDialog///PointingToDeclaration/library/com.jonapoul.about/-about-dialog/index.html
+$dokka.location:com.jonapoul.about/AboutDialog/show/#android.content.Context#kotlin.collections.List[com.jonapoul.about.AboutSection]#kotlin.Boolean#kotlin.Function1[com.jonapoul.about.AboutDialogBuilder,com.jonapoul.about.AboutDialogBuilder]/PointingToDeclaration/library/com.jonapoul.about/-about-dialog/show.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder///PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/index.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/AboutDialogBuilder/#android.content.Context#kotlin.Boolean/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/-about-dialog-builder.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/addSection/#com.jonapoul.about.AboutSection/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/add-section.html
