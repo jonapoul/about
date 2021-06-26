@@ -36,6 +36,7 @@ dependencies {
 ## Usage
 ### General
 You'll need to construct one or more `AboutSection` objects to group one or more `AboutItem`s. Example below with a single section, although the screenshots above contain two:
+
 ```kotlin
     val sections = listOf(
         AboutSection(
@@ -43,10 +44,11 @@ You'll need to construct one or more `AboutSection` objects to group one or more
             items = listOf(
                 AboutItem.fromVersion(BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE),
                 AboutItem.fromBuildType(BuildConfig.BUILD_TYPE),
+                AboutItem.fromGithub("httpe://github.com/jonapoul/about"),
                 AboutItem(
-                    icon = R.drawable.ic_github,
-                    title = "GitHub",
-                    subtitle = "jonapoul/about",
+                    icon = R.drawable.my_icon,
+                    title = "Custom Title",
+                    subtitle = "A value/subtitle goes here",
                     onClickButton = { ctx ->
                         Toast.makeText(ctx, "Hello world!", Toast.LENGTH_LONG).show()
                     }
@@ -55,9 +57,11 @@ You'll need to construct one or more `AboutSection` objects to group one or more
         )
     )
 ```
+
 The `title` attribute has a default value of null, which will cause that section to not display a title string (obviously).
 
 `items` expects a list of `AboutItems`, each of which can be constructed manually or using a selection of predefined ones that I like to use. These are:
+
 | Name | Parameters | Comments |
 |:--:|:--:|:--|
 | `fromEmail` | `emailAddress` | On click, this will launch your preferred e-mail client with a blank message to the `emailAddress` string. |
@@ -67,31 +71,45 @@ The `title` attribute has a default value of null, which will cause that section
 
 ### Dialog
 In your regular fragment/activity, call the following code:
+
 ```kotlin
     val sections = listOf(
-        ...
+        AboutSection(...),
+        AboutSection(...)
     )
     AboutDialogBuilder(context)
-        .addSections(sections)
+        .setSections(sections)
         .useDefaultTitle()
         .useDefaultPositiveButton()
         .show()
 ```
-This is subclassing a `MaterialAlertDialogBuilder`, so it can use the same methods for customising. `useDefaultTitle` gives the dialog a default title of "About" and `useDefaultPositiveButton` gives a default "OK" button which does nothing except dismiss the dialog.
 
+or as a bit of shorthand:
+
+```kotlin
+    AboutDialogBuilder(context, useDefaults = true)
+        .setSections(sections)
+        .show()
+```
+
+This is subclassing a `MaterialAlertDialogBuilder`, so it can use the same methods for customising. `useDefaultTitle` gives the dialog a default title of "About" and `useDefaultPositiveButton` gives a default "OK" button which does nothing except dismiss the dialog.
 
 ### Fragment
 Create a subclass as below:
+
 ```kotlin
 class MyAboutFragment : AboutFragment(
     sections = listOf(
-        ...
+        AboutSection(...),
+        AboutSection(...)
     )
 )
 ```
+
 Then you can freely add it to your navigation graph (or however else you handle fragments) as normal.
 
 ## Customisation
+
 | Element | Style Attribute |
 |:--|:--|
 | Section header text | `colorPrimary` |

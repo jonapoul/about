@@ -27,8 +27,11 @@ jobs:
       - name: Enable gradle execution
         run: chmod +x ./gradlew
 
-      - name: Build, test and generate docs
+      - name: Build and test
         run: ./gradlew build
+
+      - name: Generate docs
+        run: ./gradlew :library:dokkaHtml
 
       - name: Set up Python
         uses: actions/setup-python@v2
