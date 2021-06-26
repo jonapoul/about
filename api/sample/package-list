@@ -1,0 +1,20 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.jonapoul.about.sample////PointingToDeclaration/sample/com.jonapoul.about.sample/index.html
+$dokka.location:com.jonapoul.about.sample/ExampleSections///PointingToDeclaration/sample/com.jonapoul.about.sample/-example-sections/index.html
+$dokka.location:com.jonapoul.about.sample/ExampleSections/BASIC/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-example-sections/-b-a-s-i-c.html
+$dokka.location:com.jonapoul.about.sample/HomeFragment///PointingToDeclaration/sample/com.jonapoul.about.sample/-home-fragment/index.html
+$dokka.location:com.jonapoul.about.sample/HomeFragment/HomeFragment/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-home-fragment/-home-fragment.html
+$dokka.location:com.jonapoul.about.sample/HomeFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/sample/com.jonapoul.about.sample/-home-fragment/on-view-created.html
+$dokka.location:com.jonapoul.about.sample/MainActivity///PointingToDeclaration/sample/com.jonapoul.about.sample/-main-activity/index.html
+$dokka.location:com.jonapoul.about.sample/MainActivity/MainActivity/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-main-activity/-main-activity.html
+$dokka.location:com.jonapoul.about.sample/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-main-activity/on-support-navigate-up.html
+$dokka.location:com.jonapoul.about.sample/Prefs///PointingToDeclaration/sample/com.jonapoul.about.sample/-prefs/index.html
+$dokka.location:com.jonapoul.about.sample/Prefs/APP_THEME/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-prefs/-a-p-p_-t-h-e-m-e.html
+$dokka.location:com.jonapoul.about.sample/SampleAboutFragment///PointingToDeclaration/sample/com.jonapoul.about.sample/-sample-about-fragment/index.html
+$dokka.location:com.jonapoul.about.sample/SampleAboutFragment/SampleAboutFragment/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-sample-about-fragment/-sample-about-fragment.html
+$dokka.location:com.jonapoul.about.sample/SampleApplication///PointingToDeclaration/sample/com.jonapoul.about.sample/-sample-application/index.html
+$dokka.location:com.jonapoul.about.sample/SampleApplication/SampleApplication/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-sample-application/-sample-application.html
+$dokka.location:com.jonapoul.about.sample/SampleApplication/onCreate/#/PointingToDeclaration/sample/com.jonapoul.about.sample/-sample-application/on-create.html
+com.jonapoul.about.sample
+
