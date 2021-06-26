@@ -31,6 +31,7 @@ dependencies {
 
 | Dialog dark | Fragment dark
 |:--:|:--:|
+![Dialog](img/dialog_dark.png) | ![Fragment](img/fragment_dark.png) |
 
 ## Usage
 ### General

@@ -3,10 +3,9 @@ package com.jonapoul.about
 import android.content.Context
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.jonapoul.extensions.setLifecycleAwareAdapter
+import com.jonapoul.extensions.recyclerview.initialise
 
 class AboutDialogBuilder(context: Context) : MaterialAlertDialogBuilder(context) {
 
@@ -34,8 +33,7 @@ class AboutDialogBuilder(context: Context) : MaterialAlertDialogBuilder(context)
 
     override fun show(): AlertDialog {
         val recyclerView = View.inflate(context, R.layout.about_layout, null) as RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.setLifecycleAwareAdapter(SectionsAdapter(allSections))
+        recyclerView.initialise(adapter = SectionsAdapter(allSections))
         setView(recyclerView)
         return super.show()
     }

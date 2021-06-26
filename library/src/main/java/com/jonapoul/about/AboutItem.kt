@@ -7,7 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.annotation.DrawableRes
-import com.jonapoul.extensions.capitalized
+import com.jonapoul.extensions.string.capitalized
 import java.text.SimpleDateFormat
 import java.util.*
 

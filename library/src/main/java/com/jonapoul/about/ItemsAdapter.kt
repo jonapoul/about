@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.jonapoul.extensions.hide
-import com.jonapoul.extensions.show
+import com.jonapoul.extensions.view.hide
+import com.jonapoul.extensions.view.show
 
 internal class ItemsAdapter(
     private val items: List<AboutItem>

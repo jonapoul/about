@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.jonapoul.extensions.hideIfTrue
-import com.jonapoul.extensions.setLifecycleAwareAdapter
+import com.jonapoul.extensions.recyclerview.initialise
+import com.jonapoul.extensions.view.hideIfTrue
 
 internal class SectionsAdapter(
     private val sections: List<AboutSection>
@@ -24,8 +23,7 @@ internal class SectionsAdapter(
         val context = holder.headerTextView.context
         section.title?.let { holder.headerTextView.setText(it) }
         holder.headerTextView.hideIfTrue(section.title == null)
-        holder.itemsRecyclerView.layoutManager = LinearLayoutManager(context)
-        holder.itemsRecyclerView.setLifecycleAwareAdapter(ItemsAdapter(section.items))
+        holder.itemsRecyclerView.initialise(adapter = ItemsAdapter(section.items))
     }
 
     override fun getItemCount(): Int = sections.size

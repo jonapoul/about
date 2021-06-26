@@ -9,11 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.jonapoul.about.AboutDialogBuilder
 import com.jonapoul.about.sample.databinding.FragmentHomeBinding
-import com.jonapoul.extensions.getIntFromPair
-import com.jonapoul.extensions.hideIfTrue
-import com.jonapoul.extensions.safelyNavigate
-import com.jonapoul.extensions.showIfTrue
-import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import com.jonapoul.extensions.navigation.safelyNavigate
+import com.jonapoul.extensions.sharedprefs.getIntFromPair
+import com.jonapoul.extensions.view.hideIfTrue
+import com.jonapoul.extensions.view.showIfTrue
+import com.jonapoul.extensions.viewbinding.viewBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
