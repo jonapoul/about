@@ -22,7 +22,7 @@ allprojects {
 Module-level `build.gradle`:
 ```gradle
 dependencies {
-    implementation "com.github.jonapoul:about:1.0.6"
+    implementation "com.github.jonapoul:about:1.0.7"
 }
 ```
 
