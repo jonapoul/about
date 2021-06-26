@@ -10,7 +10,7 @@ import com.jonapoul.extensions.recyclerview.initialise
 
 /**
  * A class to allow easy construction and display of an [AlertDialog] containing configurable app
- * information.
+ * information. See [AboutDialog.show] as a functional method of constructing these dialogs.
  *
  * Used as below, where `dialog1` and `dialog2` are equivalent:
  *          val sections = listOf(
