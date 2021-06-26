@@ -1,0 +1,45 @@
+# pip install mkdocs mkdocs-material
+# mkdocs serve
+# mkdocs gh-deploy
+
+site_name: About
+repo_name: About
+site_url: https://jonapoul.github.io/about
+repo_url: https://github.com/jonapoul/about
+site_description: "A simple Android Library for displaying app information"
+site_author: Jon Poulton
+remote_branch: gh-pages
+
+copyright: 'Copyright &copy; 2021 Jon Poulton'
+docs_dir: 'docs'
+
+theme:
+  name: 'material'
+  icon:
+    repo: fontawesome/brands/git-alt
+  static_templates:
+    - 404.html
+  palette:
+    - scheme: slate
+      primary: green
+      accent: red
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jonapoul
+
+plugins:
+  - git-revision-date
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+  - 'Home': index.md
+  - 'API Reference': api/index.html

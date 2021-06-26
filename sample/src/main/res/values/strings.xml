@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">About Sample</string>
-    <string name="about">About</string>
 
     <string name="theme_dark">DARK THEME</string>
     <string name="theme_light">LIGHT THEME</string>
