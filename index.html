@@ -456,17 +456,18 @@
 </table>
 <h2 id="usage">Usage</h2>
 <h3 id="general">General</h3>
-<p>You'll need to construct one or more <code>AboutSection</code> objects to group one or more <code>AboutItem</code>s. Example below with a single section, although the screenshots above contain two:
+<p>You'll need to construct one or more <code>AboutSection</code> objects to group one or more <code>AboutItem</code>s. Example below with a single section, although the screenshots above contain two:</p>
 <div class="highlight"><pre><span></span><code>    <span class="kd">val</span> <span class="nv">sections</span> <span class="o">=</span> <span class="n">listOf</span><span class="p">(</span>
         <span class="n">AboutSection</span><span class="p">(</span>
             <span class="n">title</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">my_section_header</span><span class="p">,</span>
             <span class="n">items</span> <span class="o">=</span> <span class="n">listOf</span><span class="p">(</span>
                 <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromVersion</span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">VERSION_NAME</span><span class="p">,</span> <span class="n">BuildConfig</span><span class="p">.</span><span class="na">VERSION_CODE</span><span class="p">),</span>
                 <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromBuildType</span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">BUILD_TYPE</span><span class="p">),</span>
+                <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromGithub</span><span class="p">(</span><span class="s">&quot;httpe://github.com/jonapoul/about&quot;</span><span class="p">),</span>
                 <span class="n">AboutItem</span><span class="p">(</span>
-                    <span class="n">icon</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_github</span><span class="p">,</span>
-                    <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;GitHub&quot;</span><span class="p">,</span>
-                    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;jonapoul/about&quot;</span><span class="p">,</span>
+                    <span class="n">icon</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">my_icon</span><span class="p">,</span>
+                    <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Custom Title&quot;</span><span class="p">,</span>
+                    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;A value/subtitle goes here&quot;</span><span class="p">,</span>
                     <span class="n">onClickButton</span> <span class="o">=</span> <span class="p">{</span> <span class="n">ctx</span> <span class="o">-&gt;</span>
                         <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_LONG</span><span class="p">).</span><span class="na">show</span><span class="p">()</span>
                     <span class="p">}</span>
@@ -475,35 +476,67 @@
         <span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div>
-The <code>title</code> attribute has a default value of null, which will cause that section to not display a title string (obviously).</p>
-<p><code>items</code> expects a list of <code>AboutItems</code>, each of which can be constructed manually or using a selection of predefined ones that I like to use. These are:
-| Name | Parameters | Comments |
-|:--:|:--:|:--|
-| <code>fromEmail</code> | <code>emailAddress</code> | On click, this will launch your preferred e-mail client with a blank message to the <code>emailAddress</code> string. |
-| <code>fromVersion</code> | <code>versionName</code>, <code>versionCode</code> | Expects the relevant <code>BuildConfig</code> string and integer values, respectively. |
-| <code>fromBuildType</code> | <code>buildType</code> | Expects <code>BuildConfig.BUILD_TYPE</code> as a parameter. |
-| <code>fromBuildTimeMs</code> | <code>buildTimeMs</code> | Requires a custom field to be set in your build.gradle file, defining the millisecond timestamp of the app build. Add as: <code>buildConfigField "long", "BUILD_TIME_MS", System.currentTimeMillis() + "L"</code> under the module's <code>defaultConfig</code> block. |</p>
+<p>The <code>title</code> attribute has a default value of null, which will cause that section to not display a title string (obviously).</p>
+<p><code>items</code> expects a list of <code>AboutItems</code>, each of which can be constructed manually or using a selection of predefined ones that I like to use. These are:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Parameters</th>
+<th align="left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>fromEmail</code></td>
+<td align="center"><code>emailAddress</code></td>
+<td align="left">On click, this will launch your preferred e-mail client with a blank message to the <code>emailAddress</code> string.</td>
+</tr>
+<tr>
+<td align="center"><code>fromVersion</code></td>
+<td align="center"><code>versionName</code>, <code>versionCode</code></td>
+<td align="left">Expects the relevant <code>BuildConfig</code> string and integer values, respectively.</td>
+</tr>
+<tr>
+<td align="center"><code>fromBuildType</code></td>
+<td align="center"><code>buildType</code></td>
+<td align="left">Expects <code>BuildConfig.BUILD_TYPE</code> as a parameter.</td>
+</tr>
+<tr>
+<td align="center"><code>fromBuildTimeMs</code></td>
+<td align="center"><code>buildTimeMs</code></td>
+<td align="left">Requires a custom field to be set in your build.gradle file, defining the millisecond timestamp of the app build. Add as: <code>buildConfigField "long", "BUILD_TIME_MS", System.currentTimeMillis() + "L"</code> under the module's <code>defaultConfig</code> block.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="dialog">Dialog</h3>
-<p>In your regular fragment/activity, call the following code:
+<p>In your regular fragment/activity, call the following code:</p>
 <div class="highlight"><pre><span></span><code>    <span class="kd">val</span> <span class="nv">sections</span> <span class="o">=</span> <span class="n">listOf</span><span class="p">(</span>
-        <span class="p">...</span>
+        <span class="n">AboutSection</span><span class="p">(...),</span>
+        <span class="n">AboutSection</span><span class="p">(...)</span>
     <span class="p">)</span>
     <span class="n">AboutDialogBuilder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-        <span class="p">.</span><span class="na">addSections</span><span class="p">(</span><span class="n">sections</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">setSections</span><span class="p">(</span><span class="n">sections</span><span class="p">)</span>
         <span class="p">.</span><span class="na">useDefaultTitle</span><span class="p">()</span>
         <span class="p">.</span><span class="na">useDefaultPositiveButton</span><span class="p">()</span>
         <span class="p">.</span><span class="na">show</span><span class="p">()</span>
 </code></pre></div>
-This is subclassing a <code>MaterialAlertDialogBuilder</code>, so it can use the same methods for customising. <code>useDefaultTitle</code> gives the dialog a default title of "About" and <code>useDefaultPositiveButton</code> gives a default "OK" button which does nothing except dismiss the dialog.</p>
+<p>or as a bit of shorthand:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">AboutDialogBuilder</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">useDefaults</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">setSections</span><span class="p">(</span><span class="n">sections</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">show</span><span class="p">()</span>
+</code></pre></div>
+<p>This is subclassing a <code>MaterialAlertDialogBuilder</code>, so it can use the same methods for customising. <code>useDefaultTitle</code> gives the dialog a default title of "About" and <code>useDefaultPositiveButton</code> gives a default "OK" button which does nothing except dismiss the dialog.</p>
 <h3 id="fragment">Fragment</h3>
-<p>Create a subclass as below:
+<p>Create a subclass as below:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">MyAboutFragment</span> <span class="p">:</span> <span class="n">AboutFragment</span><span class="p">(</span>
     <span class="n">sections</span> <span class="o">=</span> <span class="n">listOf</span><span class="p">(</span>
-        <span class="p">...</span>
+        <span class="n">AboutSection</span><span class="p">(...),</span>
+        <span class="n">AboutSection</span><span class="p">(...)</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
-Then you can freely add it to your navigation graph (or however else you handle fragments) as normal.</p>
+<p>Then you can freely add it to your navigation graph (or however else you handle fragments) as normal.</p>
 <h2 id="customisation">Customisation</h2>
 <table>
 <thead>

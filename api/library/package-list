@@ -2,25 +2,16 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.jonapoul.about////PointingToDeclaration/library/com.jonapoul.about/index.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder///PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/index.html
-$dokka.location:com.jonapoul.about/AboutDialogBuilder/AboutDialogBuilder/#android.content.Context/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/-about-dialog-builder.html
+$dokka.location:com.jonapoul.about/AboutDialogBuilder/AboutDialogBuilder/#android.content.Context#kotlin.Boolean/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/-about-dialog-builder.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/addSection/#com.jonapoul.about.AboutSection/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/add-section.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/addSections/#kotlin.collections.List[com.jonapoul.about.AboutSection]/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/add-sections.html
+$dokka.location:com.jonapoul.about/AboutDialogBuilder/setSections/#kotlin.collections.List[com.jonapoul.about.AboutSection]/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/set-sections.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/show/#/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/show.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/useDefaultPositiveButton/#/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/use-default-positive-button.html
 $dokka.location:com.jonapoul.about/AboutDialogBuilder/useDefaultTitle/#/PointingToDeclaration/library/com.jonapoul.about/-about-dialog-builder/use-default-title.html
 $dokka.location:com.jonapoul.about/AboutFragment///PointingToDeclaration/library/com.jonapoul.about/-about-fragment/index.html
 $dokka.location:com.jonapoul.about/AboutFragment/AboutFragment/#kotlin.collections.List[com.jonapoul.about.AboutSection]/PointingToDeclaration/library/com.jonapoul.about/-about-fragment/-about-fragment.html
 $dokka.location:com.jonapoul.about/AboutFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/library/com.jonapoul.about/-about-fragment/on-view-created.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion///PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/index.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromBuildDate/#java.util.Date/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-build-date.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromBuildTimeMs/#kotlin.Long/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-build-time-ms.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromBuildType/#kotlin.String/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-build-type.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromDiscord/#kotlin.String/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-discord.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromEmail/#kotlin.String/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-email.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromGithub/#kotlin.String/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-github.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromReddit/#kotlin.String/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-reddit.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromVersion/#kotlin.String#kotlin.Int/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-version.html
-$dokka.location:com.jonapoul.about/AboutItem.Companion/fromWebsite/#kotlin.Int#kotlin.String#kotlin.String/PointingToDeclaration/library/com.jonapoul.about/-about-item/-companion/from-website.html
 $dokka.location:com.jonapoul.about/AboutItem.OnClickListener///PointingToDeclaration/library/com.jonapoul.about/-about-item/-on-click-listener/index.html
 $dokka.location:com.jonapoul.about/AboutItem.OnClickListener/onItemClick/#android.content.Context/PointingToDeclaration/library/com.jonapoul.about/-about-item/-on-click-listener/on-item-click.html
 $dokka.location:com.jonapoul.about/AboutItem///PointingToDeclaration/library/com.jonapoul.about/-about-item/index.html
