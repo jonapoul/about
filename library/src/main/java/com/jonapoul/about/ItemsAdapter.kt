@@ -33,11 +33,11 @@ internal class ItemsAdapter(
         holder.icon.setImageResource(item.icon)
         holder.title.text = item.title
         holder.subtitle.text = item.subtitle
-        if (item.onClickButton != null) {
+        if (item.onClick != null) {
             holder.launchButton.show()
             val context = holder.itemView.context
-            holder.itemView.setOnClickListener { item.onClickButton.onItemClick(context) }
-            holder.launchButton.setOnClickListener { item.onClickButton.onItemClick(context) }
+            holder.itemView.setOnClickListener { item.onClick.onItemClick(context) }
+            holder.launchButton.setOnClickListener { item.onClick.onItemClick(context) }
         } else {
             /* Remove the launcher button if no click listener is supplied */
             holder.launchButton.hide()

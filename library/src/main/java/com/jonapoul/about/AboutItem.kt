@@ -17,7 +17,7 @@ import java.util.*
  * @param icon The Drawable resource ID of an icon to be displayed on the left hand side.
  * @param title The string to be displayed as the row's title.
  * @param subtitle The string to be displayed as the row's subtitle/value.
- * @param onClickButton A nullable callback to be invoked when the user taps on the row. If not null,
+ * @param onClick A nullable callback to be invoked when the user taps on the row. If not null,
  *                      a "launch" button will be displayed on the right hand side to make the row's
  *                      clickability more obvious.
  */
@@ -25,7 +25,7 @@ data class AboutItem(
     @DrawableRes val icon: Int,
     val title: String,
     val subtitle: String,
-    val onClickButton: OnClickListener? = null,
+    val onClick: OnClickListener? = null
 ) {
 
     /**
@@ -51,7 +51,7 @@ data class AboutItem(
             icon = R.drawable.ic_email,
             title = "Email",
             subtitle = emailAddress,
-            onClickButton = { ctx ->
+            onClick = { ctx ->
                 val intent = Intent(Intent.ACTION_SENDTO)
                 intent.data = Uri.parse("mailto:") // only email apps should handle this
                 intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(emailAddress))
@@ -118,7 +118,7 @@ data class AboutItem(
             icon = icon,
             title = name,
             subtitle = url,
-            onClickButton = { openWebPage(it, url) }
+            onClick = { openWebPage(it, url) }
         )
 
         /**
