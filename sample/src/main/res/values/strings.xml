@@ -6,6 +6,7 @@
 
     <string name="dialog">Dialog</string>
     <string name="fragment">Fragment</string>
+    <string name="fragment_footer">Copyright 2021\nYour Company Here Ltd.</string>
 
     <string name="section_header_1">Build</string>
     <string name="section_header_2">Support</string>
