@@ -35,9 +35,9 @@ internal class ItemsAdapter(
         holder.subtitle.text = item.subtitle
         if (item.onClickButton != null) {
             holder.launchButton.show()
-            holder.itemView.setOnClickListener {
-                item.onClickButton.onItemClick(holder.itemView.context)
-            }
+            val context = holder.itemView.context
+            holder.itemView.setOnClickListener { item.onClickButton.onItemClick(context) }
+            holder.launchButton.setOnClickListener { item.onClickButton.onItemClick(context) }
         } else {
             /* Remove the launcher button if no click listener is supplied */
             holder.launchButton.hide()
