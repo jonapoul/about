@@ -38,7 +38,9 @@ data class AboutItem(
         fun onItemClick(context: Context)
     }
 
-    /** @suppress */
+    /**
+     * Companion object
+     */
     companion object {
 
         /**

@@ -12,7 +12,9 @@ data class AboutSection(
     val items: List<AboutItem>,
     @StringRes val title: Int? = null,
 ) {
-    /** @suppress */
+    /**
+     * Companion object
+     */
     companion object {
         /**
          * Constructs an [AboutSection] containing three [AboutItem]s to describe the app's
