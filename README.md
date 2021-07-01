@@ -1,6 +1,6 @@
 # about
 
-![Build](https://github.com/jonapoul/about/actions/workflows/actions.yml/badge.svg)
+![Build](https://github.com/jonapoul/about/actions/workflows/test.yml/badge.svg)
 [![Jitpack](https://jitpack.io/v/jonapoul/about.svg)](https://jitpack.io/#jonapoul/about)
 
 ## Summary
@@ -22,7 +22,7 @@ allprojects {
 Module-level `build.gradle`:
 ```gradle
 dependencies {
-    implementation "com.github.jonapoul:about:1.0.7"
+    implementation "com.github.jonapoul:about:{version}"
 }
 ```
 
