@@ -9,7 +9,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/medium"
+        android:padding="8dp"
         tools:itemCount="2"
         tools:listitem="@layout/about_section" />
 

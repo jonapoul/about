@@ -30,7 +30,7 @@ data class AboutSection(
             buildType: String,
             buildTimeMs: Long? = null
         ): AboutSection = AboutSection(
-            title = R.string.build_info,
+            title = R.string.about_build,
             items = mutableListOf(
                 AboutItem.fromVersion(versionName, versionCode),
                 AboutItem.fromBuildType(buildType),

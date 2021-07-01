@@ -76,7 +76,7 @@ class AboutDialogBuilder(
      * Applies a default string of "About" to the dialog's title.
      */
     fun useDefaultTitle(): AboutDialogBuilder {
-        setTitle(R.string.lib_name)
+        setTitle(R.string.about_title)
         return this
     }
 

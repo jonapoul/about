@@ -15,8 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/medium"
-        android:paddingEnd="@dimen/medium"
+        android:layout_marginEnd="8dp"
+        android:paddingEnd="8dp"
         app:tint="?attr/colorOnSurface"
         tools:ignore="ContentDescription"
         tools:src="@drawable/ic_info" />
@@ -49,9 +49,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="@dimen/medium"
+        android:padding="8dp"
         android:src="@drawable/ic_launch"
-        app:backgroundTint="@color/transparent"
+        app:backgroundTint="#00FFFFFF"
         app:tint="?attr/colorPrimary"
         tools:ignore="ContentDescription" />
 
