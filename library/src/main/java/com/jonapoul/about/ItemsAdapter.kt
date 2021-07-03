@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jonapoul.extensions.view.hide
 import com.jonapoul.extensions.view.show
 
-
 /**
  * Inflates and initialises a list of [AboutItem]s for display.
  */
