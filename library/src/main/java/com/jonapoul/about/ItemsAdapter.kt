@@ -1,5 +1,6 @@
 package com.jonapoul.about
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jonapoul.extensions.view.hide
 import com.jonapoul.extensions.view.show
+
 
 /**
  * Inflates and initialises a list of [AboutItem]s for display.
@@ -38,6 +40,15 @@ internal class ItemsAdapter(
             val context = holder.itemView.context
             holder.itemView.setOnClickListener { item.onClick.onItemClick(context) }
             holder.launchButton.setOnClickListener { item.onClick.onItemClick(context) }
+
+            /* Attach a ripple effect to the item */
+            val outValue = TypedValue()
+            holder.itemView.context.theme.resolveAttribute(
+                android.R.attr.selectableItemBackground,
+                outValue,
+                true
+            )
+            holder.itemView.setBackgroundResource(outValue.resourceId)
         } else {
             /* Remove the launcher button if no click listener is supplied */
             holder.launchButton.hide()
