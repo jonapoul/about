@@ -30,11 +30,11 @@ dependencies {
 
 | Dialog light | Fragment light
 |:--:|:--:|
-![Dialog](img/dialog_light.png) | ![Fragment](img/fragment_light.png) |
+![Dialog](img/dialog_light.jpg) | ![Fragment](img/fragment_light.jpg) |
 
 | Dialog dark | Fragment dark
 |:--:|:--:|
-![Dialog](img/dialog_dark.png) | ![Fragment](img/fragment_dark.png) |
+![Dialog](img/dialog_dark.jpg) | ![Fragment](img/fragment_dark.jpg) |
 
 ## Usage
 ### General
@@ -50,12 +50,17 @@ You'll need to construct one or more `AboutSection` objects to group one or more
                 AboutItem.fromGithub("httpe://github.com/jonapoul/about"),
                 AboutItem(
                     icon = R.drawable.my_icon,
-                    title = "Custom Title",
+                    title = "Raw String Title",
                     subtitle = "A value/subtitle goes here",
                     onClickButton = { ctx ->
                         Toast.makeText(ctx, "Hello world!", Toast.LENGTH_LONG).show()
                     }
-                )
+                ),
+                AboutItem(
+                    icon = R.drawable.another_icon,
+                    titleRes = R.string.title_resource,
+                    subtitleRes = R.string.subtitle_resource
+                ),
             )
         )
     )

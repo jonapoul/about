@@ -32,8 +32,8 @@ internal class ItemsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.icon.setImageResource(item.icon)
-        holder.title.text = item.title
-        holder.subtitle.text = item.subtitle
+        holder.setTitle(item)
+        holder.setSubtitle(item)
         if (item.onClick != null) {
             holder.launchButton.show()
             val context = holder.itemView.context
@@ -64,5 +64,15 @@ internal class ItemsAdapter(
         val title: TextView = root.findViewById(R.id.item_title)
         val subtitle: TextView = root.findViewById(R.id.item_subtitle)
         val launchButton: ImageView = root.findViewById(R.id.item_button)
+
+        fun setTitle(item: AboutItem) {
+            item.title?.let { title.text = it }
+            item.titleRes?.let { title.setText(it) }
+        }
+
+        fun setSubtitle(item: AboutItem) {
+            item.subtitle?.let { subtitle.text = it }
+            item.subtitleRes?.let { subtitle.setText(it) }
+        }
     }
 }
