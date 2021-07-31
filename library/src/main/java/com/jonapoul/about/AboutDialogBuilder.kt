@@ -2,6 +2,7 @@ package com.jonapoul.about
 
 import android.content.Context
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -93,9 +94,10 @@ class AboutDialogBuilder(
      * Builds and displays the [AlertDialog].
      */
     override fun show(): AlertDialog {
-        val recyclerView = View.inflate(context, R.layout.about_layout, null) as RecyclerView
+        val root = View.inflate(context, R.layout.about_layout, null) as LinearLayout
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.initialise(adapter = SectionsAdapter(allSections))
-        setView(recyclerView)
+        setView(root)
         return super.show()
     }
 }
