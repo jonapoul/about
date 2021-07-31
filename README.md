@@ -30,11 +30,11 @@ dependencies {
 
 | Dialog light | Fragment light
 |:--:|:--:|
-![Dialog](img/dialog_light.png) | ![Fragment](img/fragment_light.png) |
+![Dialog](img/dialog_light.jpg) | ![Fragment](img/fragment_light.jpg) |
 
 | Dialog dark | Fragment dark
 |:--:|:--:|
-![Dialog](img/dialog_dark.png) | ![Fragment](img/fragment_dark.png) |
+![Dialog](img/dialog_dark.jpg) | ![Fragment](img/fragment_dark.jpg) |
 
 ## Usage
 ### General
