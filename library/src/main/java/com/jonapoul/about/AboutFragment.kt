@@ -38,7 +38,7 @@ abstract class AboutFragment(
         val footer = view.findViewById<TextView>(R.id.footer_text)
         if (footerText != null) {
             footer.show()
-            footer?.setText(footerText)
+            footer.setText(footerText)
         } else {
             footer.hide()
         }
