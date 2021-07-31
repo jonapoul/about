@@ -47,7 +47,7 @@ You'll need to construct one or more `AboutSection` objects to group one or more
             items = listOf(
                 AboutItem.fromVersion(BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE),
                 AboutItem.fromBuildType(BuildConfig.BUILD_TYPE),
-                AboutItem.fromGithub("httpe://github.com/jonapoul/about"),
+                AboutItem.fromGithub("http://github.com/jonapoul/about"),
                 AboutItem(
                     icon = R.drawable.my_icon,
                     title = "Raw String Title",
