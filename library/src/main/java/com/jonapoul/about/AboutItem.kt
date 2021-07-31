@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.jonapoul.extensions.string.capitalized
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,8 +24,10 @@ import java.util.*
  */
 data class AboutItem(
     @DrawableRes val icon: Int,
-    val title: String,
-    val subtitle: String,
+    val title: String? = null,
+    @StringRes val titleRes: Int? = null,
+    val subtitle: String? = null,
+    @StringRes val subtitleRes: Int? = null,
     val onClick: OnClickListener? = null
 ) {
 
@@ -51,7 +54,7 @@ data class AboutItem(
         @SuppressLint("QueryPermissionsNeeded")
         fun fromEmail(emailAddress: String): AboutItem = AboutItem(
             icon = R.drawable.ic_email,
-            title = "Email",
+            titleRes = R.string.about_email,
             subtitle = emailAddress,
             onClick = { ctx ->
                 val intent = Intent(Intent.ACTION_SENDTO)
@@ -60,7 +63,7 @@ data class AboutItem(
                 try {
                     ctx.startActivity(intent)
                 } catch (e: ActivityNotFoundException) {
-                    Toast.makeText(ctx, "No email clients found!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx, R.string.about_email_no_clients, Toast.LENGTH_LONG).show()
                 }
             }
         )
@@ -74,7 +77,7 @@ data class AboutItem(
          */
         fun fromVersion(versionName: String, versionCode: Int): AboutItem = AboutItem(
             icon = R.drawable.ic_info,
-            title = "Version",
+            titleRes = R.string.about_version,
             subtitle = "$versionName ($versionCode)"
         )
 
@@ -86,7 +89,7 @@ data class AboutItem(
          */
         fun fromBuildType(buildType: String): AboutItem = AboutItem(
             icon = R.drawable.ic_build,
-            title = "Build Type",
+            titleRes = R.string.about_build_type,
             subtitle = buildType.capitalized()
         )
 
@@ -104,7 +107,7 @@ data class AboutItem(
          */
         fun fromBuildTimeMs(buildTimeMs: Long): AboutItem = AboutItem(
             icon = R.drawable.ic_date,
-            title = "Build Time",
+            titleRes = R.string.about_build_time,
             subtitle = SimpleDateFormat("HH:mm:ss dd MMM yyyy z", Locale.getDefault())
                 .format(Date(buildTimeMs))
         )
@@ -116,9 +119,13 @@ data class AboutItem(
          * @param name The title of the website
          * @param url The fully-qualified URL of the website
          */
-        fun fromWebsite(@DrawableRes icon: Int, name: String, url: String): AboutItem = AboutItem(
+        fun fromWebsite(
+            @DrawableRes icon: Int,
+            @StringRes name: Int,
+            url: String
+        ): AboutItem = AboutItem(
             icon = icon,
-            title = name,
+            titleRes = name,
             subtitle = url,
             onClick = { openWebPage(it, url) }
         )
@@ -132,7 +139,7 @@ data class AboutItem(
          */
         fun fromGithub(url: String): AboutItem = fromWebsite(
             icon = R.drawable.ic_github,
-            name = "GitHub",
+            name = R.string.about_github,
             url = url
         )
 
@@ -145,7 +152,7 @@ data class AboutItem(
          */
         fun fromDiscord(url: String): AboutItem = fromWebsite(
             icon = R.drawable.ic_discord,
-            name = "Discord",
+            name = R.string.about_discord,
             url = url
         )
 
@@ -158,7 +165,7 @@ data class AboutItem(
          */
         fun fromReddit(url: String): AboutItem = fromWebsite(
             icon = R.drawable.ic_reddit,
-            name = "Reddit",
+            name = R.string.about_reddit,
             url = url
         )
 

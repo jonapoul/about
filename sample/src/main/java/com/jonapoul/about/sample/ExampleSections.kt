@@ -14,7 +14,13 @@ object ExampleSections {
             items = listOf(
                 AboutItem.fromGithub("https://github.com/jonapoul/about"),
                 AboutItem.fromReddit("https://reddit.com/r/androiddev"),
-                AboutItem.fromEmail("contact@company.org")
+                AboutItem.fromDiscord("https://discord.gg/n0tAR34lUrL"),
+                AboutItem.fromEmail("contact@company.org"),
+                AboutItem(
+                    icon = R.drawable.ic_love,
+                    titleRes = R.string.love_item_title,
+                    subtitleRes = R.string.love_item_subtitle
+                )
             )
         )
     )
