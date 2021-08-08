@@ -2,20 +2,20 @@ ext.versions = [
         // Build variables
         minSdk                  : 14,
         targetSdk               : 30,
-        libVersionCode          : 11,
-        libVersionName          : '1.0.11',
+        libVersionCode          : 12,
+        libVersionName          : '1.0.12',
 
         // Plugins, etc
         gradle                  : '4.2.2',
         dokka                   : '1.4.32',
-        kotlin                  : '1.5.20',
+        kotlin                  : '1.5.21',
         buildTools              : '30.0.3',
         ktlint                  : '10.1.0',
         leakcanary              : '2.7',
         spotless                : '5.14.0',
 
         // Library dependencies
-        android_extensions      : '1.0.6',
+        android_extensions      : '1.0.10',
         material                : '1.4.0',
 
         // Sample app dependencies
