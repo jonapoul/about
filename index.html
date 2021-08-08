@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://jonapoul.github.io/about/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.1118c9be.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.ba0d045b.min.css">
         
       
     
@@ -422,7 +422,7 @@
                 
                 
                 <h1 id="about">about</h1>
-<p><img alt="Build" src="https://github.com/jonapoul/about/actions/workflows/actions.yml/badge.svg" />
+<p><img alt="Build" src="https://github.com/jonapoul/about/actions/workflows/test.yml/badge.svg" />
 <a href="https://jitpack.io/#jonapoul/about"><img alt="Jitpack" src="https://jitpack.io/v/jonapoul/about.svg" /></a></p>
 <h2 id="summary">Summary</h2>
 <p>A collection of two useful views/fragments that I use all the time, specifically for displaying "about my app" information in either a <code>AlertDialog</code> or a <code>Fragment</code>. It's not a particularly complicated library but it's nice to keep it in a single place.</p>
@@ -438,7 +438,7 @@
 </code></pre></div></p>
 <p>Module-level <code>build.gradle</code>:
 <div class="highlight"><pre><span></span><code>dependencies {
-    implementation &quot;com.github.jonapoul:about:1.0.7&quot;
+    implementation &quot;com.github.jonapoul:about:{version}&quot;
 }
 </code></pre></div></p>
 <h2 id="screenshots">Screenshots</h2>
@@ -451,8 +451,8 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><img alt="Dialog" src="img/dialog_light.png" /></td>
-<td align="center"><img alt="Fragment" src="img/fragment_light.png" /></td>
+<td align="center"><img alt="Dialog" src="img/dialog_light.jpg" /></td>
+<td align="center"><img alt="Fragment" src="img/fragment_light.jpg" /></td>
 </tr>
 </tbody>
 </table>
@@ -465,8 +465,8 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><img alt="Dialog" src="img/dialog_dark.png" /></td>
-<td align="center"><img alt="Fragment" src="img/fragment_dark.png" /></td>
+<td align="center"><img alt="Dialog" src="img/dialog_dark.jpg" /></td>
+<td align="center"><img alt="Fragment" src="img/fragment_dark.jpg" /></td>
 </tr>
 </tbody>
 </table>
@@ -479,15 +479,20 @@
             <span class="n">items</span> <span class="o">=</span> <span class="n">listOf</span><span class="p">(</span>
                 <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromVersion</span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">VERSION_NAME</span><span class="p">,</span> <span class="n">BuildConfig</span><span class="p">.</span><span class="na">VERSION_CODE</span><span class="p">),</span>
                 <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromBuildType</span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">BUILD_TYPE</span><span class="p">),</span>
-                <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromGithub</span><span class="p">(</span><span class="s">&quot;httpe://github.com/jonapoul/about&quot;</span><span class="p">),</span>
+                <span class="n">AboutItem</span><span class="p">.</span><span class="na">fromGithub</span><span class="p">(</span><span class="s">&quot;http://github.com/jonapoul/about&quot;</span><span class="p">),</span>
                 <span class="n">AboutItem</span><span class="p">(</span>
                     <span class="n">icon</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">my_icon</span><span class="p">,</span>
-                    <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Custom Title&quot;</span><span class="p">,</span>
+                    <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Raw String Title&quot;</span><span class="p">,</span>
                     <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&quot;A value/subtitle goes here&quot;</span><span class="p">,</span>
                     <span class="n">onClickButton</span> <span class="o">=</span> <span class="p">{</span> <span class="n">ctx</span> <span class="o">-&gt;</span>
                         <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_LONG</span><span class="p">).</span><span class="na">show</span><span class="p">()</span>
                     <span class="p">}</span>
-                <span class="p">)</span>
+                <span class="p">),</span>
+                <span class="n">AboutItem</span><span class="p">(</span>
+                    <span class="n">icon</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">another_icon</span><span class="p">,</span>
+                    <span class="n">titleRes</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">title_resource</span><span class="p">,</span>
+                    <span class="n">subtitleRes</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">subtitle_resource</span>
+                <span class="p">),</span>
             <span class="p">)</span>
         <span class="p">)</span>
     <span class="p">)</span>
@@ -592,7 +597,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-01
+      Last update: 2021-08-08
     
   </small>
 </div>
@@ -669,10 +674,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.sections", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.82b56eb2.min.js"></script>
+      <script src="assets/javascripts/bundle.2b46852b.min.js"></script>
       
     
   </body>
