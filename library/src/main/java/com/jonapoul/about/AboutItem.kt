@@ -21,6 +21,7 @@ import java.util.*
  * @param onClick A nullable callback to be invoked when the user taps on the row. If not null,
  *                      a "launch" button will be displayed on the right hand side to make the row's
  *                      clickability more obvious.
+ * @param launchIcon The drawable resource to place on the right hand side of a clickable item.
  */
 data class AboutItem(
     @DrawableRes val icon: Int,
@@ -28,7 +29,8 @@ data class AboutItem(
     @StringRes val titleRes: Int? = null,
     val subtitle: String? = null,
     @StringRes val subtitleRes: Int? = null,
-    val onClick: OnClickListener? = null
+    val onClick: OnClickListener? = null,
+    @DrawableRes val launchIcon: Int = R.drawable.ic_launch
 ) {
 
     /**

@@ -38,6 +38,7 @@ internal class ItemsAdapter(
             holder.launchButton.show()
             val context = holder.itemView.context
             holder.itemView.setOnClickListener { item.onClick.onItemClick(context) }
+            holder.launchButton.setImageResource(item.launchIcon)
             holder.launchButton.setOnClickListener { item.onClick.onItemClick(context) }
 
             /* Attach a ripple effect to the item */
