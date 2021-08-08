@@ -47,7 +47,9 @@ project.afterEvaluate {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
     implementation "com.github.jonapoul:android-extensions:$versions.android_extensions"
     implementation "com.google.android.material:material:$versions.material"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
 }
