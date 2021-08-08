@@ -1,8 +1,9 @@
-name: Update Docs
+name: Build
 
 on:
-  release:
-    types: [published]
+  pull_request:
+  push:
+    branches:
 
 env:
   GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false"
@@ -15,10 +16,33 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Configure JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 14
+
+      - name: Enable gradle execution
+        run: chmod +x ./gradlew
+
+      - name: Build and test
+        run: ./gradlew build
+
+      - name: Generate docs
+        run: ./gradlew :library:dokkaHtml
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+
+      - name: Copy README to docs
+        run:  |
+          mkdir -p docs
+          cp -r img docs/img
+          cp README.md docs/index.md
 
       - name: Build mkdocs
         run: |
