@@ -1,6 +1,6 @@
 # about
 
-![Build](https://github.com/jonapoul/about/actions/workflows/test.yml/badge.svg)
+![Build](https://github.com/jonapoul/about/actions/workflows/actions.yml/badge.svg)
 [![Jitpack](https://jitpack.io/v/jonapoul/about.svg)](https://jitpack.io/#jonapoul/about)
 
 ## Summary
