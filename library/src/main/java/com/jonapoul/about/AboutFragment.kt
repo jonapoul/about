@@ -5,8 +5,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.jonapoul.extensions.navigation.navControllers
 import com.jonapoul.extensions.recyclerview.initialise
 import com.jonapoul.extensions.view.hide
 import com.jonapoul.extensions.view.show
@@ -29,7 +29,7 @@ abstract class AboutFragment(
     @StringRes private val footerText: Int? = null
 ) : Fragment(R.layout.about_layout) {
 
-    protected val navController by navControllers()
+    protected val navController by lazy { findNavController() }
 
     /**
      * Applies the sections to a [RecyclerView].
