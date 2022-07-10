@@ -58,7 +58,7 @@ afterEvaluate {
     /* Delete the existing JSON file before we regenerate it. If we don't do this, the plugin
      * doesn't overwrite the existing one so any dependency changes won't be reflected */
     tasks.licenseReleaseReport.doFirst {
-        def file = new File("${rootProject.projectDir}/sample/src/main/assets/open_source_licenses.json")
+        def file = new File("${project.projectDir}/src/main/assets/open_source_licenses.json")
         file.delete()
     }
 }
