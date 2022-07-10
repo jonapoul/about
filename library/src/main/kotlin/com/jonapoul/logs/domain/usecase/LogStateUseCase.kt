@@ -1,8 +1,8 @@
 package com.jonapoul.logs.domain.usecase
 
 import com.jonapoul.common.core.requireMessage
-import com.jonapoul.logs.data.model.LogState
 import com.jonapoul.logs.data.LogStateRepository
+import com.jonapoul.logs.data.model.LogState
 import com.jonapoul.logs.domain.ExportLogsTextCreator
 import com.jonapoul.logs.domain.FileSizeFormatter
 import com.jonapoul.logs.domain.LogUiState

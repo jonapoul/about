@@ -4,12 +4,12 @@ import com.jonapoul.about.di.AboutResources
 import com.jonapoul.common.core.IBuildConfig
 import com.jonapoul.common.data.api.ApiResult
 import com.jonapoul.common.di.IODispatcher
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import org.threeten.bp.Instant
+import javax.inject.Inject
 
 internal class GithubRepository @Inject constructor(
     @IODispatcher private val io: CoroutineDispatcher,

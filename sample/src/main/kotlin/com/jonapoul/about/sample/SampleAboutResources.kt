@@ -6,6 +6,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
 
+@Suppress("MagicNumber")
 class SampleAboutResources @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : AboutResources {
