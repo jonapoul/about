@@ -36,7 +36,7 @@ ext.versions = [
     spotless                : '6.5.2',
 
     // Library dependencies
-    android_common          : '1.9.10',
+    android_common          : '1.10.0',
     lifecycle               : '2.5.0',
     material                : '1.6.1',
     moshi                   : '1.12.0',
