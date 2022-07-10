@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jonapoul.about.sample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.jonapoul.about.sample.SampleApplication"
         android:allowBackup="true"
@@ -10,14 +12,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.About.NoActionBar"
+        android:theme="@style/Theme.About"
         tools:ignore="AllowBackup">
-        <activity android:name="com.jonapoul.about.sample.MainActivity">
+
+        <activity
+            android:name="com.jonapoul.about.sample.SampleActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

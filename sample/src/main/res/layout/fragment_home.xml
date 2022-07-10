@@ -4,56 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/large"
+    android:layout_margin="@dimen/medium"
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/group_theme"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/dialog_button"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ButtonStyle">
-
-        <Button
-            android:id="@+id/light_button"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/large"
-            android:text="@string/theme_light"
-            app:icon="@drawable/ic_theme_light" />
-
-        <Button
-            android:id="@+id/dark_button"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/large"
-            android:text="@string/theme_dark"
-            android:visibility="gone"
-            app:icon="@drawable/ic_theme_dark" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/dialog_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/large"
-        android:text="@string/dialog"
-        app:icon="@drawable/ic_launch"
-        app:layout_constraintBottom_toTopOf="@id/fragment_button"
-        app:layout_constraintTop_toBottomOf="@id/group_theme" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/fragment_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/large"
-        android:text="@string/fragment"
+        android:text="@string/about_button"
         app:icon="@drawable/ic_navigate" />
 
 </LinearLayout>

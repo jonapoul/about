@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_about"
+    app:startDestination="@id/nav_about">
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.jonapoul.about.ui.AboutFragment"
+        android:label="@string/nav_about"
+        tools:layout="@layout/fragment_about">
+
+        <action
+            android:id="@+id/to_libraries"
+            app:destination="@id/nav_libraries" />
+
+        <action
+            android:id="@+id/to_logs"
+            app:destination="@id/nav_logs" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_libraries"
+        android:name="com.jonapoul.libraries.ui.LibrariesFragment"
+        android:label="@string/nav_libraries"
+        tools:layout="@layout/fragment_libraries" />
+
+    <fragment
+        android:id="@+id/nav_logs"
+        android:name="com.jonapoul.logs.ui.LogsFragment"
+        android:label="@string/nav_logs"
+        tools:layout="@layout/fragment_logs" />
+
+</navigation>
