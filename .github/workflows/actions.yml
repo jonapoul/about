@@ -36,8 +36,8 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: Test
-        #run: ./gradlew koverMergedVerify
-        run: ./gradlew testDebugUnitTest
+#        run: ./gradlew library:koverMergedVerify
+        run: ./gradlew library:testDebugUnitTest
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2

@@ -40,7 +40,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = [
+            '-Xjvm-default=compatibility',
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        ]
+    }
 }
 
 project.afterEvaluate {
@@ -84,11 +90,14 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
 
     /* Unit Test */
+    testImplementation "com.github.jonapoul.android-common:testing-core:$versions.android_common"
     testImplementation "com.github.jonapoul.android-common:testing-unit:$versions.android_common"
     testImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
     kaptTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    testImplementation "org.threeten:threetenbp:$versions.threeten"
 
     /* Instrumented Test */
+    androidTestImplementation "com.github.jonapoul.android-common:testing-core:$versions.android_common"
     androidTestImplementation "com.github.jonapoul.android-common:testing-android:$versions.android_common"
     androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$versions.hilt"

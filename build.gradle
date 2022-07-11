@@ -23,6 +23,7 @@ buildscript {
 }
 
 apply from: "gradle/dependency-update.gradle"
+apply from: "gradle/kover.gradle"
 
 allprojects {
     def root = rootProject.projectDir
