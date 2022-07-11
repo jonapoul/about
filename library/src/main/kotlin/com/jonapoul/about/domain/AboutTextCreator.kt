@@ -23,21 +23,12 @@ internal class AboutTextCreator @Inject constructor(
     val releaseNoUpdate: String =
         fromRes(R.string.about_latest_release_no_update)
 
-    val reportIssueUrl: String =
-        aboutResources.githubIssuesUrl
-
-    val sourceCodeUrl: String =
-        aboutResources.githubUrl
-
     val developedBy: String =
         context.getString(
             R.string.about_developed_by,
             aboutResources.developerName,
             aboutResources.developmentYear,
         )
-
-    val softwareLicense: String =
-        aboutResources.softwareLicense
 
     val version: String =
         context.getString(
