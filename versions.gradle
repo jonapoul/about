@@ -19,7 +19,7 @@ ext.versions = [
     targetSdk               : 31,
     gitId                   : getGitId(),
     libVersionCode          : 2000,
-    libVersionName          : '2.0.0-alpha',
+    libVersionName          : '2.0.0',
 
     // Plugins, etc
     buildTools              : '30.0.3',
