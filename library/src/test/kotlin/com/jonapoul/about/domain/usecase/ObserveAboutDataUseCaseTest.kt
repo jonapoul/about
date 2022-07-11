@@ -13,6 +13,7 @@ import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.junit4.MockKRule
+import io.mockk.mockkStatic
 import kotlinx.coroutines.test.runTest
 import org.junit.AfterClass
 import org.junit.Before
@@ -20,6 +21,7 @@ import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
 import org.threeten.bp.Instant
+import org.threeten.bp.ZoneId
 import java.util.Locale
 import kotlin.test.assertEquals
 
@@ -49,6 +51,8 @@ internal class ObserveAboutDataUseCaseTest {
 
     @Before
     fun before() {
+        mockkStatic(ZoneId::class)
+        every { ZoneId.systemDefault() } returns ZONE_UTC
         every { context.packageName } returns PACKAGE_NAME
         every { context.packageManager } returns packageManager
         every { packageManager.getPackageInfo(ofType<String>(), any()) } returns PackageInfo()
@@ -91,7 +95,7 @@ internal class ObserveAboutDataUseCaseTest {
                     versionInfo = version,
                     gitId = gitId,
                     buildTimestamp = "12:34:56, Sun 02 Jan 2022 +0000",
-                    installTimestamp = "13:34:56, Sat 02 Jul 2022 +0100",
+                    installTimestamp = "12:34:56, Sat 02 Jul 2022 +0000",
                     appName = appName,
                     developedBy = developedBy,
                     softwareLicense = softwareLicense,
@@ -105,7 +109,7 @@ internal class ObserveAboutDataUseCaseTest {
 
     companion object {
         private const val PACKAGE_NAME = "com.package.name"
-        private val LOCALE: Locale = Locale.UK
+        private val ZONE_UTC = ZoneId.of("UTC")
         private lateinit var defaultLocale: Locale
         private val BUILD_TIME = Instant.parse("2022-01-02T12:34:56.789Z")
         private val INSTALL_TIME = Instant.parse("2022-07-02T12:34:56.789Z") // 6 months later
@@ -113,7 +117,7 @@ internal class ObserveAboutDataUseCaseTest {
         @BeforeClass
         fun beforeClass() {
             defaultLocale = Locale.getDefault()
-            Locale.setDefault(LOCALE)
+            Locale.setDefault(Locale.UK)
         }
 
         @AfterClass
