@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="*">
+
+            <TableRow>
+
+                <TextView
+                    style="@style/About.TableTitle"
+                    android:text="@string/log_table_num_files" />
+
+                <TextView
+                    android:id="@+id/num_log_files"
+                    style="@style/About.TableValue"
+                    tools:text="25" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/About.TableTitle"
+                    android:text="@string/log_table_file_size" />
+
+                <TextView
+                    android:id="@+id/log_file_size"
+                    style="@style/About.TableValue"
+                    tools:text="50 MB" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/About.TableTitle"
+                    android:text="@string/log_table_logging_since" />
+
+                <TextView
+                    android:id="@+id/logging_since"
+                    style="@style/About.TableValue"
+                    tools:text="5 days ago" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/failed_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/very_large"
+            android:gravity="center"
+            android:text="@string/log_table_failed"
+            android:textSize="@dimen/large"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,26 @@
+complexity:
+  LongParameterList:
+    active: false
+  TooManyFunctions:
+    thresholdInObjects: 20
+    thresholdInClasses: 20
+
+exceptions:
+  SwallowedException:
+    active: false
+  TooGenericExceptionCaught:
+    active: false
+
+formatting:
+  NoWildcardImports:
+    active: false
+
+style:
+  UnnecessaryAbstractClass:
+    active: false
+  UnusedPrivateMember:
+    active: false
+  WildcardImport:
+    active: false
+  ForbiddenComment:
+    allowedPatterns: TODO

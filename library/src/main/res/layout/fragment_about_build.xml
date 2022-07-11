@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/small"
+    app:cardElevation="@dimen/small">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.jonapoul.about.ui.AboutItemView
+                android:id="@+id/about_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:about_icon="@drawable/ic_about_info"
+                app:about_title="@string/about_version_title"
+                tools:about_subtitle="1.23 (4)" />
+
+            <com.jonapoul.about.ui.AboutItemView
+                android:id="@+id/about_git_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:about_icon="@drawable/ic_about_git"
+                app:about_title="@string/about_git_id_title"
+                tools:about_subtitle="a1b2c3d4-master" />
+
+            <com.jonapoul.about.ui.AboutItemView
+                android:id="@+id/about_build_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:about_icon="@drawable/ic_about_build"
+                app:about_title="@string/about_build_time_title"
+                tools:about_subtitle="Date here" />
+
+            <com.jonapoul.about.ui.AboutItemView
+                android:id="@+id/about_install_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:about_icon="@drawable/ic_about_update"
+                app:about_title="@string/about_install_time_title"
+                tools:about_subtitle="Date here" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</com.google.android.material.card.MaterialCardView>

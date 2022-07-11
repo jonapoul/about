@@ -1,6 +1,9 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "dagger.hilt.android.plugin"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "com.jaredsburrows.license"
 
 android {
     compileSdkVersion versions.targetSdk
@@ -8,12 +11,14 @@ android {
 
     defaultConfig {
         applicationId "com.jonapoul.about.sample"
-        minSdkVersion 14
+        minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode versions.libVersionCode
         versionName versions.libVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "long", "BUILD_TIME_MS", System.currentTimeMillis() + "L"
+        buildConfigField "org.threeten.bp.Instant", "BUILD_TIME", "org.threeten.bp.Instant.ofEpochMilli(" + System.currentTimeMillis() + "L)"
+        buildConfigField "String", "GIT_ID", "\"" + versions.gitId + "\""
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -32,17 +37,50 @@ android {
     }
 }
 
+licenseReport {
+    /* We only want JSON data to be put in the app assets, to read at runtime */
+    generateJsonReport = true
+    copyJsonReportToAssets = true
+
+    /* Don't generate CSV/HTML output */
+    generateCsvReport = false
+    generateHtmlReport = false
+    copyCsvReportToAssets = false
+    copyHtmlReportToAssets = false
+}
+
+afterEvaluate {
+    /* Make sure the licenses JSON is generated whenever we build the app */
+    preBuild.dependsOn licenseReleaseReport
+    assembleDebug.dependsOn licenseReleaseReport
+    assembleRelease.dependsOn licenseReleaseReport
+
+    /* Delete the existing JSON file before we regenerate it. If we don't do this, the plugin
+     * doesn't overwrite the existing one so any dependency changes won't be reflected */
+    tasks.licenseReleaseReport.doFirst {
+        def file = new File("${project.projectDir}/src/main/assets/open_source_licenses.json")
+        file.delete()
+    }
+}
+
 dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
 
     implementation project(':library')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+    implementation "androidx.multidex:multidex:$versions.multidex"
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
     implementation "androidx.preference:preference-ktx:$versions.preference"
-    implementation "com.github.jonapoul:android-extensions:$versions.android_extensions"
+    implementation "com.github.jonapoul.android-common:lib-data:$versions.android_common"
+    implementation "com.github.jonapoul.android-common:lib-domain:$versions.android_common"
+    implementation "com.github.jonapoul.android-common:lib-ui:$versions.android_common"
     implementation "com.google.android.material:material:$versions.material"
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    implementation "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
+    implementation "org.threeten:threetenbp:$versions.threetenbp:no-tzdb"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
 }

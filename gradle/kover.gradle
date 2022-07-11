@@ -1,0 +1,66 @@
+apply plugin: "kover"
+
+ext.KOVER_INCLUDES = [
+    "com.jonapoul.about.*",
+    "com.jonapoul.libraries.*",
+    "com.jonapoul.logs.*",
+]
+
+ext.KOVER_EXCLUDES = [
+    /* Sample app */
+    "com.jonapoul.about.sample.*",
+
+    /* Generated classes */
+    "*.BuildConfig",
+    "*.*ViewInjector*",
+    "*.*MembersInjector",
+    "*.*_Factory*",
+    "*.*_*Factory*",
+    "*.*_Provide*Factory",
+    "*.Hilt_*",
+    "*.*_HiltModules*",
+    "*.*FragmentDirections*",
+    "*.*FragmentArgs*",
+    "*.*Binding*",
+    "*.*_Impl*",
+    "*.*HiltWrapper_*",
+    "dagger.hilt.internal.*",
+    "hilt_aggregated_deps.*",
+
+    /* UI classes */
+    "*.*Fragment*",
+    "*.*Adapter*",
+    "*.*ViewHolder*",
+    "*.*View",
+    "*.*View\$*",
+    "*.*TextCreator*",
+
+    /* Hilt modules */
+    "*.di.*",
+]
+
+kover {
+    disabled = false
+    generateReportOnCheck = true
+    instrumentAndroidPackage = false
+    runAllTestsForProjectTask = true
+}
+
+tasks.koverMergedHtmlReport {
+    enabled = true
+    includes = KOVER_INCLUDES
+    excludes = KOVER_EXCLUDES
+}
+
+tasks.koverMergedVerify {
+    includes = KOVER_INCLUDES
+    excludes = KOVER_EXCLUDES
+
+    rule {
+        name = "Minimum line coverage rate in percent"
+        bound {
+            valueType = "COVERED_LINES_PERCENTAGE"
+            minValue = 60
+        }
+    }
+}

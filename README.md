@@ -1,15 +1,20 @@
-# about
+# About
 
 ![Build](https://github.com/jonapoul/about/actions/workflows/actions.yml/badge.svg)
 [![Jitpack](https://jitpack.io/v/jonapoul/about.svg)](https://jitpack.io/#jonapoul/about)
 
 ## Summary
-A collection of two useful views/fragments that I use all the time, specifically for displaying "about my app" information in either a `AlertDialog` or a `Fragment`. It's not a particularly complicated library but it's nice to keep it in a single place.
+An Android library which gives you a set of three screens:
+- About the app
+- All supporting third-party libraries
+- Export debugging logs (optional)
 
-## API Reference
-See [https://jonapoul.github.io/about](https://jonapoul.github.io/about).
- 
-## Gradle Import
+## Screenshots
+TBC
+
+## Setup
+
+### Library Import
 Root-level `build.gradle`:
 ```gradle
 allprojects {
@@ -26,102 +31,146 @@ dependencies {
 }
 ```
 
-## Screenshots
+### Other Dependencies/Setup
+This library also requires the following frameworks, since I only really wrote it for my own uses:
+- [Dagger Hilt](https://dagger.dev/hilt/)
+    - An implementation of the [IBuildConfig](https://github.com/jonapoul/android-common/blob/master/lib-core/src/main/kotlin/com/jonapoul/common/core/IBuildConfig.kt) interface from my [android-common](https://github.com/jonapoul/android-common) library, bound via Hilt
+    - An implementation of the [AboutResources](https://github.com/jonapoul/about/blob/master/library/src/main/kotlin/com/jonapoul/about/di/AboutResources.kt) interface from this library, bound via Hilt
+- [AndroidX Navigation](https://developer.android.com/guide/navigation/navigation-getting-started)
+- [Android ThreeTenBP](https://github.com/JakeWharton/ThreeTenABP)
+- [Gradle License Plugin](https://github.com/jaredsburrows/gradle-license-plugin)
+- Probably others(?)
 
-| Dialog light | Fragment light
-|:--:|:--:|
-![Dialog](img/dialog_light.jpg) | ![Fragment](img/fragment_light.jpg) |
+For the Gradle License plugin, first import the plugin to your classpath (in the root build file):
+```groovy
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "com.jaredsburrows:gradle-license-plugin:0.9.0"
+    }
+}
+```
 
-| Dialog dark | Fragment dark
-|:--:|:--:|
-![Dialog](img/dialog_dark.jpg) | ![Fragment](img/fragment_dark.jpg) |
+Then add to your module-level build file as:
+```groovy
+apply plugin: "com.jaredsburrows.license"
+
+android {
+    ...
+}
+
+licenseReport {
+    /* We only want JSON data to be put in the app assets, to read at runtime */
+    generateJsonReport = true
+    copyJsonReportToAssets = true
+
+    /* Don't generate CSV/HTML output */
+    generateCsvReport = false
+    generateHtmlReport = false
+    copyCsvReportToAssets = false
+    copyHtmlReportToAssets = false
+}
+
+afterEvaluate {
+    /* Make sure the licenses JSON is generated whenever we build the app */
+    preBuild.dependsOn licenseReleaseReport
+    assembleDebug.dependsOn licenseReleaseReport
+    assembleRelease.dependsOn licenseReleaseReport
+
+    /* Delete the existing JSON file before we regenerate it. If we don't do this, the plugin
+     * doesn't overwrite the existing one so any dependency changes won't be reflected */
+    tasks.licenseReleaseReport.doFirst {
+        def file = new File("${project.projectDir}/src/main/assets/open_source_licenses.json")
+        file.delete()
+    }
+}
+```
+
+This will spit out a JSON file into your module's assets folder, so I'd recommend adding the following to your .gitignore file:
+
+```
+open_source_licenses.json
+```
+
+In future I'll probably find a way of incorporating all this setup into the library itself, but that's a task for another day.
 
 ## Usage
-### General
-You'll need to construct one or more `AboutSection` objects to group one or more `AboutItem`s. Example below with a single section, although the screenshots above contain two:
 
-```kotlin
-    val sections = listOf(
-        AboutSection(
-            title = R.string.my_section_header,
-            items = listOf(
-                AboutItem.fromVersion(BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE),
-                AboutItem.fromBuildType(BuildConfig.BUILD_TYPE),
-                AboutItem.fromGithub("http://github.com/jonapoul/about"),
-                AboutItem(
-                    icon = R.drawable.my_icon,
-                    title = "Raw String Title",
-                    subtitle = "A value/subtitle goes here",
-                    onClickButton = { ctx ->
-                        Toast.makeText(ctx, "Hello world!", Toast.LENGTH_LONG).show()
-                    }
-                ),
-                AboutItem(
-                    icon = R.drawable.another_icon,
-                    titleRes = R.string.title_resource,
-                    subtitleRes = R.string.subtitle_resource
-                ),
-            )
-        )
-    )
+### Navigation
+
+In your app's navigation graph XML resource file, add the following:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.jonapoul.about.sample.HomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/to_about"
+            app:destination="@id/nav_graph_about" />
+
+    </fragment>
+
+    <include app:graph="@navigation/nav_graph_about" />
+
+</navigation>
 ```
 
-The `title` attribute has a default value of null, which will cause that section to not display a title string (obviously).
+Make sure that the `app:destination` in the navigation action block exactly matches `@id/nav_graph_about`, not `nav_graph`!
 
-`items` expects a list of `AboutItems`, each of which can be constructed manually or using a selection of predefined ones that I like to use. These are:
+Now you can just use a `NavController` instance to show the about screen.
 
-| Name | Parameters | Comments |
-|:--:|:--:|:--|
-| `fromEmail` | `emailAddress` | On click, this will launch your preferred e-mail client with a blank message to the `emailAddress` string. |
-| `fromVersion` | `versionName`, `versionCode` | Expects the relevant `BuildConfig` string and integer values, respectively. |
-| `fromBuildType` | `buildType` | Expects `BuildConfig.BUILD_TYPE` as a parameter. |
-| `fromBuildTimeMs` | `buildTimeMs` | Requires a custom field to be set in your build.gradle file, defining the millisecond timestamp of the app build. Add as: `buildConfigField "long", "BUILD_TIME_MS", System.currentTimeMillis() + "L"` under the module's `defaultConfig` block. |
-
-### Dialog
-In your regular fragment/activity, call the following code:
-
+### Implementing Classes
+Two interfaces need to be implemented and bound via Hilt. Examples:
 ```kotlin
-    val sections = listOf(
-        AboutSection(...),
-        AboutSection(...)
-    )
-    AboutDialogBuilder(context)
-        .setSections(sections)
-        .useDefaultTitle()
-        .useDefaultPositiveButton()
-        .show()
+@Module
+@InstallIn(SingletonComponent::class)
+class ProvidesBuildConfigModule {
+    @Provides
+    @Singleton
+    fun buildConfig(): IBuildConfig = object : IBuildConfig {
+        override val debug = BuildConfig.DEBUG
+        override val versionName = BuildConfig.VERSION_NAME
+        override val versionCode = BuildConfig.VERSION_CODE
+        override val gitId = BuildConfig.GIT_ID
+        override val buildTime = BuildConfig.BUILD_TIME
+    }
+
+    @Provides
+    @Singleton
+    fun aboutResources(@ApplicationContext context: Context): AboutResources = object : AboutResources {
+        override val logDirectory: File = File(context.dataDir, "logs")
+        override val appName: Int = R.string.app_name
+        override val appIconResource: Int = R.mipmap.ic_launcher_round
+        override val githubReleasesUrl: String = "/repos/jonapoul/about/releases"
+        override val githubIssuesUrl: String = "https://github.com/jonapoul/about/issues/new"
+        override val githubUrl: String = "https://github.com/jonapoul/about"
+        override val developerName: String = "Jon Poulton"
+        override val developmentYear: Int = 2022
+        override val softwareLicense: String = "Apache 2.0"
+        override val logDescriptionText: String = context.getString(R.string.log_description_text)
+        override val showLogsButton: Boolean = false
+        override fun logZipFilename(timestamp: String): String = "about_logs_$timestamp.zip"
+
+        override fun readLicensesJsonString(): String =
+            context.assets
+                .open(LICENSES_ASSET_FILENAME)
+                .reader()
+                .use { it.readText() }
+    }
+
+    private companion object {
+        const val LICENSES_ASSET_FILENAME = "open_source_licenses.json"
+    }
+}
 ```
-
-or as a bit of shorthand:
-
-```kotlin
-    AboutDialogBuilder(context, useDefaults = true)
-        .setSections(sections)
-        .show()
-```
-
-This is subclassing a `MaterialAlertDialogBuilder`, so it can use the same methods for customising. `useDefaultTitle` gives the dialog a default title of "About" and `useDefaultPositiveButton` gives a default "OK" button which does nothing except dismiss the dialog.
-
-### Fragment
-Create a subclass as below:
-
-```kotlin
-class MyAboutFragment : AboutFragment(
-    sections = listOf(
-        AboutSection(...),
-        AboutSection(...)
-    )
-)
-```
-
-Then you can freely add it to your navigation graph (or however else you handle fragments) as normal.
-
-## Customisation
-
-| Element | Style Attribute |
-|:--|:--|
-| Section header text | `colorPrimary` |
-| Section CardView background | `cardBackgroundColor` |
-| Item left-hand icon | `onSurface` |
-| Item text | `onSurface` |
-| Item right-hand button  | `colorPrimary` |

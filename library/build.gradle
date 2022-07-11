@@ -1,11 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'maven-publish'
-
-ext {
-    GROUP_ID = 'com.jonapoul'
-    ARTIFACT_ID = 'about'
-}
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "maven-publish"
+apply plugin: "dagger.hilt.android.plugin"
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion versions.targetSdk
@@ -18,6 +16,12 @@ android {
         versionName versions.libVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -27,19 +31,31 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-        kotlinOptions.freeCompilerArgs += ['-module-name', "$GROUP_ID.$ARTIFACT_ID"]
     }
 
-    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = [
+            '-Xjvm-default=compatibility',
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        ]
+    }
 }
 
 project.afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
+            maven(MavenPublication) {
+                groupId 'com.jonapoul'
+                artifactId 'about'
+                version versions.libVersionName
                 from components.release
             }
         }
@@ -47,9 +63,42 @@ project.afterEvaluate {
 }
 
 dependencies {
+    /* Runtime */
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
-    implementation "com.github.jonapoul:android-extensions:$versions.android_extensions"
+    implementation "androidx.preference:preference-ktx:$versions.preference"
+    implementation "androidx.room:room-ktx:$versions.room"
+    implementation "androidx.room:room-runtime:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+    implementation "com.github.jonapoul.android-common:lib-data:$versions.android_common"
+    implementation "com.github.jonapoul.android-common:lib-domain:$versions.android_common"
+    implementation "com.github.jonapoul.android-common:lib-ui:$versions.android_common"
     implementation "com.google.android.material:material:$versions.material"
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    implementation "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
+    implementation "com.jakewharton.timber:timber:$versions.timber"
+    implementation "com.jakewharton:process-phoenix:$versions.process_phoenix"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "org.threeten:threetenbp:$versions.threetenbp:no-tzdb"
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+    implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+
+    /* Unit Test */
+    testImplementation "com.github.jonapoul.android-common:testing-core:$versions.android_common"
+    testImplementation "com.github.jonapoul.android-common:testing-unit:$versions.android_common"
+    testImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
+    kaptTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    testImplementation "org.threeten:threetenbp:$versions.threeten"
+
+    /* Instrumented Test */
+    androidTestImplementation "com.github.jonapoul.android-common:testing-core:$versions.android_common"
+    androidTestImplementation "com.github.jonapoul.android-common:testing-android:$versions.android_common"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.hilt"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$versions.hilt"
 }

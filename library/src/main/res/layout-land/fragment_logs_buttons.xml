@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:ignore="ButtonStyle">
+
+    <Button
+        android:id="@+id/export_button"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/small"
+        android:layout_weight="1"
+        android:text="@string/log_button_export"
+        app:icon="@drawable/ic_about_save" />
+
+    <Button
+        android:id="@+id/clear_button"
+        style="@style/Theme.Common.Button.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/small"
+        android:layout_weight="1"
+        android:text="@string/log_button_delete"
+        android:textColor="@color/onSurfaceRed"
+        app:icon="@drawable/ic_about_delete"
+        app:iconTint="@color/onSurfaceRed" />
+
+</LinearLayout>

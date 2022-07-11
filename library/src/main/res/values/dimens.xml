@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="about_app_icon_size">60dp</dimen>
+    <dimen name="about_buttons_height_landscape">40dp</dimen>
+
+    <dimen name="about_library_item_title_text_size">16sp</dimen>
+    <dimen name="about_library_item_field_name_text_size">14sp</dimen>
+    <dimen name="about_library_item_field_value_text_size">12sp</dimen>
+</resources>

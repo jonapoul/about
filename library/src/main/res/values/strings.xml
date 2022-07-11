@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_title">About</string>
-    <string name="about_build">Build</string>
+    <string name="nav_about">About</string>
+    <string name="nav_libraries">Supporting Libraries</string>
+    <string name="nav_logs">Export Logs</string>
 
-    <string name="about_email">Email</string>
-    <string name="about_email_no_clients">No email clients found!</string>
+    <string name="about_developed_by">%1$s, %2$d</string>
+    <string name="about_version_title">Version</string>
+    <string name="about_version_placeholder" translatable="false">%1$s (%2$d)</string>
+    <string name="about_git_id_title">Git ID</string>
+    <string name="about_build_time_title">Build Time</string>
+    <string name="about_install_time_title">Install Time</string>
+    <string name="about_button_check_updates">Check For Updates</string>
+    <string name="about_button_libraries">Third Party Licenses</string>
+    <string name="about_button_open_issue">Report Issues</string>
+    <string name="about_button_logs">Application Logs</string>
+    <string name="about_no_browser_found">No installed apps can open this link!</string>
+    <string name="about_check_updates_loading">Checking for updates…</string>
+    <string name="about_latest_release_none_found">No releases found</string>
+    <string name="about_latest_release_no_update">No new updates found</string>
+    <string name="about_latest_release_found_title">Update available</string>
+    <string name="about_latest_release_found_msg">New version: %1$s\n\nWould you like to download it?</string>
 
-    <string name="about_version">Version</string>
-    <string name="about_build_type">Build Type</string>
-    <string name="about_build_time">Build Time</string>
+    <string name="library_loading_failed">Failed reading licenses: %1$s</string>
+    <string name="library_none_found">No libraries found!</string>
+    <string name="library_item_authors">Authors:</string>
+    <string name="library_item_artifact">Artifact:</string>
+    <string name="library_item_version">Version:</string>
+    <string name="library_item_license">License:</string>
+    <string name="library_item_description">Description:</string>
+    <string name="library_search">Search</string>
+    <string name="library_unknown">[Unknown]</string>
 
-    <string name="about_reddit">Reddit</string>
-    <string name="about_discord">Discord</string>
-    <string name="about_github">GitHub</string>
+    <string name="log_table_num_files">Number of log files:</string>
+    <string name="log_table_logging_since">Logging since:</string>
+    <string name="log_table_file_size">Log file size:</string>
+    <string name="log_table_failed">Failed to fetch log state: %1$s</string>
+    <plurals name="logging_since_days">
+        <item quantity="one">%1$d day ago</item>
+        <item quantity="other">%1$d days ago</item>
+    </plurals>
+    <plurals name="logging_since_hours">
+        <item quantity="one">%1$d hour ago</item>
+        <item quantity="other">%1$d hours ago</item>
+    </plurals>
+    <plurals name="logging_since_minutes">
+        <item quantity="one">%1$d minute ago</item>
+        <item quantity="other">%1$d minutes ago</item>
+    </plurals>
+    <string name="log_button_export">Export Logs</string>
+    <string name="log_button_delete">Clear Logs</string>
+    <string name="log_export_failure_dialog_message">Saving the log file failed: %1$s</string>
+    <string name="log_clear_dialog_title">Clear Logs</string>
+    <string name="log_clear_dialog_message">Are you sure you want to delete all OpenMDM logs? This operation is irreversible.\n\nThis will also restart the application.</string>
+    <plurals name="logs_delete_completed">
+        <item quantity="one">Deleted %d file, relaunching app…</item>
+        <item quantity="other">Deleted %d files, relaunching app…</item>
+    </plurals>
+    <string name="logs_choose_output_file">Choose a location to save the logs</string>
+    <string name="logs_zipping">Zipping…</string>
+    <string name="export_file_failed">Failed copying file: %s</string>
+    <string name="export_file_succeeded">Successfully exported log files</string>
 </resources>
