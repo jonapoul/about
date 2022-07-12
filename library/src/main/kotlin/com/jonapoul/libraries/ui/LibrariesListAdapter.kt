@@ -55,7 +55,8 @@ internal class LibrariesListAdapter(
                             lib.description.matches(pattern) or
                             lib.authors.matches(pattern) or
                             lib.license.matches(pattern) or
-                            lib.version.matches(pattern)
+                            lib.version.matches(pattern) or
+                            lib.artifact.matches(pattern)
                     }
                 )
             }
