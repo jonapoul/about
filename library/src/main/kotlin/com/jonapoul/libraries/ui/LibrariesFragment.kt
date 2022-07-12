@@ -46,8 +46,8 @@ internal class LibrariesFragment : CommonFragment(
         binding.recyclerView.adapter = adapter
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        super.onCreateMenu(menu, menuInflater)
         val searchView = menu.findItem(R.id.action_search)
             .also { searchButton = it }
             .actionView as SearchView
