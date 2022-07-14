@@ -51,7 +51,7 @@
     <string name="log_button_delete">Clear Logs</string>
     <string name="log_export_failure_dialog_message">Saving the log file failed: %1$s</string>
     <string name="log_clear_dialog_title">Clear Logs</string>
-    <string name="log_clear_dialog_message">Are you sure you want to delete all OpenMDM logs? This operation is irreversible.\n\nThis will also restart the application.</string>
+    <string name="log_clear_dialog_message">Are you sure you want to delete all application logs? This operation is irreversible.\n\nThis will also restart the application.</string>
     <plurals name="logs_delete_completed">
         <item quantity="one">Deleted %d file, relaunching app…</item>
         <item quantity="other">Deleted %d files, relaunching app…</item>

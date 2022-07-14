@@ -18,8 +18,8 @@ ext.versions = [
     minSdk                  : 15,
     targetSdk               : 31,
     gitId                   : getGitId(),
-    libVersionCode          : 202207120,
-    libVersionName          : '2.0.1',
+    libVersionCode          : 202207140,
+    libVersionName          : '2.0.2',
 
     // Plugins, etc
     buildTools              : '30.0.3',
